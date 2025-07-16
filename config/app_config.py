@@ -1,4 +1,6 @@
 from pydantic import BaseModel
+from config.config_loader import ConfigLoader
+
 
 class PostgresConfig(BaseModel):
     HOST: str
@@ -8,4 +10,7 @@ class PostgresConfig(BaseModel):
     DB_NAME: str
 
 class AppConfig(BaseModel):
-    postgress_config : PostgresConfig
+    postgress : PostgresConfig
+
+
+config = ConfigLoader.get_config()
