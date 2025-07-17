@@ -282,3 +282,14 @@
 {"timestamp":"2025-07-17T06:50:06.310738","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
 {"timestamp":"2025-07-17T06:50:36.457185","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
 {"timestamp":"2025-07-17T06:51:07.273115","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-17T06:51:37.913515","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-17T06:52:08.640756","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-17T06:52:39.331946","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-17T06:53:10.038661","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-17T06:53:40.811560","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-17T06:54:11.472615","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-17T06:54:42.160858","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-17T06:55:12.915040","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-17T06:55:43.565282","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-17T06:56:14.266421","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-17T06:56:45.099256","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
