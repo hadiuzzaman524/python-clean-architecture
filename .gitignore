@@ -1,3 +1,3 @@
 .venv
-app_config.toml
-
+config/app_config.toml
+__pycache__
