@@ -11,7 +11,7 @@ class BigQueryClient:
         self.config = config.bigquery
         try:
             credentials = service_account.Credentials.from_service_account_file(
-                self.config.SERVICE_ACCOUNT_FILEPATH
+                "/Users/w3e-macmini/airflow-data-pipeline/config/carbon-zone-466205-r5-baaa1a665c04.json"
             )
             self.client = bigquery.Client(credentials=credentials, project=self.config.PROJECT_ID)
        

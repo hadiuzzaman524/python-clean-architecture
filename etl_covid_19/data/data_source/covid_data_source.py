@@ -21,5 +21,6 @@ class CovidDataSource:
             diabetes_prevalence
             FROM `bigquery-public-data.covid19_open_data.covid19_open_data`
             ORDER BY date DESC
+            LIMIT 50
         """
         return self.bigquery_client.run_query(query=query)
