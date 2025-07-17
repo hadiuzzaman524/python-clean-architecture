@@ -6,9 +6,8 @@ class CovidDataPipelineImpl(CovidDataPipeline):
         self.data_source = data_source
   
     def fetch_from_bigquery(self):
-        data = self.data_source.get_data_from_big_query()
-        return data
-    
+        return self.data_source.get_data_from_big_query()
+        
     def transform_records(self, raw_data):
         return super().transform_records(raw_data)
     

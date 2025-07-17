@@ -27,6 +27,7 @@ class BigQueryClient:
             query_job = self.client.query(query)
             results = query_job.result()
             return [dict(row) for row in results]
+        
         except Exception as error:
             print(f"Error running query: {error}")
  
