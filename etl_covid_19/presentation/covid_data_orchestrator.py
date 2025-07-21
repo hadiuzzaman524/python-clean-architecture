@@ -1,18 +1,26 @@
 from etl_covid_19.container import Container
+from etl_covid_19.presentation.base_cron_job import BaseCronJob
 
-class CovidDataOrchestrator:
+class CovidDataOrchestrator(BaseCronJob):
 
-    container = Container()
-    
-    try: 
+    def __init__(self, *args, **kwargs):
+        self.start_date = kwargs.get('start_date')
+        self.end_date = kwargs.get('end_date')
+
+    def trigger(self):
+
+        container = Container()
+
         extract = container.fetch_covid_data_use_case()
         transform = container.transform_covid_data_use_case()
         load = container.insert_covid_data_use_case()
 
-        result = extract.execute(start_date='2020-05-01', end_date='2020-05-05')
-        output= transform.execute(raw_data=result)
-        load.execute(records=output)
+        try: 
 
-    except Exception as e: 
-        print(e)
+            result = extract.execute(start_date=self.start_date, end_date= self.end_date)
+            output= transform.execute(raw_data=result)
+            load.execute(records=output)
+
+        except Exception as e: 
+            print(e)
 

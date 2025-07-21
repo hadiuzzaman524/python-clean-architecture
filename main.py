@@ -1,35 +1,54 @@
 
-# from etl_covid_19.domain.use_cases.fetch_covid_data_usecase import FetchCovidDataUseCase
-# from etl_covid_19.data.repository.covid_data_pipeline_impl import CovidDataPipelineImpl
-# from etl_covid_19.data.data_source.covid_data_source import CovidDataSource
-# from etl_covid_19.infrastructure.biqquery.bigquery_client import BigQueryClient
-# from etl_covid_19.infrastructure.database.database_client import DatabaseClient
-# from etl_covid_19.domain.use_cases.transform_covid_data_usecase import TransformCovidDataUseCase
-# from etl_covid_19.domain.use_cases.insert_covid_data_use_case import InsertCovidDataUseCase
+import argparse
+import importlib
+from datetime import datetime
 
 
-# bg = BigQueryClient()
-# db = DatabaseClient()
-# data_source = CovidDataSource(bigquery_client=bg)
-# pipeline = CovidDataPipelineImpl(data_source=data_source, database_client=db)
+class CronExecutor:
+    @staticmethod
+    def parse_arguments():
+        parser = argparse.ArgumentParser(description="Run COVID-19 ETL Cron")
+        parser.add_argument(
+            "--cron-name", required=True, type=str, help="Set the orchestrator name"
+        )
+        parser.add_argument(
+            "--start-date",
+            type=lambda d: datetime.strptime(d, "%Y-%m-%d").date(),
+            required=False,
+            help="Start date in YYYY-MM-DD (optional)",
+        )
+        parser.add_argument(
+            "--end-date",
+            type=lambda d: datetime.strptime(d, "%Y-%m-%d").date(),
+            required=False,
+            help="End date in YYYY-MM-DD (optional)",
+        )
 
-# obj = FetchCovidDataUseCase(pipeline=pipeline)
-# transform = TransformCovidDataUseCase(pipeline=pipeline)
-# insert = InsertCovidDataUseCase(pipeline=pipeline)
+        return parser.parse_args()
 
-# data= obj.execute(start_date='2020-06-01', end_date='2020-06-05')
-# trans_data= transform.execute(data)
-# insert.execute(records=trans_data)
+    def get_job_instance(self):
+        args = self.parse_arguments()
+        try:
+            module = importlib.import_module(f"etl_covid_19.presentation.{args.cron_name}")
+        except ModuleNotFoundError as e:
+            print(f"Module not found: {e}")
+            exit(1)
+
+        class_name = args.cron_name.replace("_", " ").title().replace(" ", "")
+        parsed_args = {
+            "start_date": args.start_date,
+            "end_date": args.end_date,
+        }
+
+        if hasattr(module, class_name):
+            job_class = getattr(module, class_name)
+            return job_class(**parsed_args)
+        else:
+            print(f"Class `{class_name}` not found in module `{args.cron_name}`.")
+            exit(1)
 
 
-from etl_covid_19.container import Container
-
-container = Container()
-
-extract = container.fetch_covid_data_use_case()
-transform = container.transform_covid_data_use_case()
-load = container.insert_covid_data_use_case()
-
-result = extract.execute(start_date='2020-05-01', end_date='2020-05-05')
-output= transform.execute(raw_data=result)
-load.execute(records=output)
+if __name__ == "__main__":
+    handler = CronExecutor()
+    job = handler.get_job_instance()
+    job.trigger()
