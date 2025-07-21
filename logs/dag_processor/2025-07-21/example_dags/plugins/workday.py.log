@@ -1,0 +1,5 @@
+{"timestamp":"2025-07-21T04:34:42.489592","level":"info","event":"Filling up the DagBag from /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/plugins/workday.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-21T04:35:13.001867","level":"info","event":"Filling up the DagBag from /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/plugins/workday.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-21T04:35:43.373568","level":"info","event":"Filling up the DagBag from /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/plugins/workday.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-21T04:36:13.658846","level":"info","event":"Filling up the DagBag from /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/plugins/workday.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-21T04:36:43.956672","level":"info","event":"Filling up the DagBag from /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/plugins/workday.py","logger":"airflow.models.dagbag.DagBag"}

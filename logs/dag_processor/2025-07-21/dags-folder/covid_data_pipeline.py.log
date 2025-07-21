@@ -1,0 +1,5 @@
+{"timestamp":"2025-07-21T04:34:40.442317","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-21T04:35:12.604595","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-21T04:35:42.946550","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-21T04:36:13.269705","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-07-21T04:36:43.573802","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/covid_data_pipeline.py","logger":"airflow.models.dagbag.DagBag"}
