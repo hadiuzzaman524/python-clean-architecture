@@ -16,8 +16,9 @@ class CovidDataPipelineImpl(CovidDataPipeline):
     def transform_records(self, raw_data):
         df = pd.DataFrame(raw_data)
         df = df.fillna(0).infer_objects(copy=False)
+        df = df.drop_duplicates(subset=["date", "country_code"], keep="first")
         return df.to_dict(orient="records")
 
     def load_to_database(self, records):
-        self.database_client.insert_data_into_pg(model_name= CovidModel, data= records)
+        self.database_client.bulk_upsert(model= CovidModel, records= records, conflict_columns=['date', 'country_code'])
     
