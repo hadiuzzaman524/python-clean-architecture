@@ -18,7 +18,7 @@ obj = FetchCovidDataUseCase(pipeline=pipeline)
 transform = TransformCovidDataUseCase(pipeline=pipeline)
 insert = InsertCovidDataUseCase(pipeline=pipeline)
 
-data= obj.execute()
+data= obj.execute(start_date='2020-06-01', end_date='2020-06-05')
 trans_data= transform.execute(data)
 insert.execute(records=trans_data)
 

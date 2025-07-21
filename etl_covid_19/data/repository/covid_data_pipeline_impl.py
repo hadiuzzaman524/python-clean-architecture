@@ -10,8 +10,9 @@ class CovidDataPipelineImpl(CovidDataPipeline):
         self.data_source = data_source
         self.database_client = database_client
   
-    def fetch_from_bigquery(self):
-        return self.data_source.get_data_from_big_query()
+    
+    def fetch_from_bigquery(self,start_date: str, end_date: str):
+        return self.data_source.get_data_from_big_query(start_date=start_date, end_date=end_date)
         
     def transform_records(self, raw_data):
         df = pd.DataFrame(raw_data)

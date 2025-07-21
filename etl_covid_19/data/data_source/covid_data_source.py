@@ -5,7 +5,7 @@ class CovidDataSource:
     def __init__(self, bigquery_client: BigQueryClient):
         self.bigquery_client = bigquery_client
         
-    def get_data_from_big_query(self):
+    def get_data_from_big_query(self, start_date: str, end_date: str):
         query = """ 
             SELECT
             date,
@@ -20,7 +20,8 @@ class CovidDataSource:
             smoking_prevalence,
             diabetes_prevalence
             FROM `bigquery-public-data.covid19_open_data.covid19_open_data`
+            WHERE date BETWEEN '{start_date}' AND '{end_date}'
             ORDER BY date DESC
-            LIMIT 50
-        """
+        """.format(start_date=start_date, end_date=end_date)
+        
         return self.bigquery_client.run_query(query=query)
