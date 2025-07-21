@@ -7,12 +7,12 @@ from etl_covid_19.domain.use_cases.insert_covid_data_use_case import InsertCovid
 from etl_covid_19.data.repository.covid_data_pipeline_impl import CovidDataPipelineImpl
 from etl_covid_19.data.data_source.covid_data_source import CovidDataSource
 
-from etl_covid_19.infrastructure.biqquery.bigquery_client import BigQueryClient
+from etl_covid_19.infrastructure.bigquery.bigquery_client import BigQueryClient
 from etl_covid_19.infrastructure.database.database_client import DatabaseClient
 
 
 class Container(containers.DeclarativeContainer):
-    
+
     # Infrastructure clients
     bigquery_client = providers.Singleton(BigQueryClient)
     database_client = providers.Singleton(DatabaseClient)

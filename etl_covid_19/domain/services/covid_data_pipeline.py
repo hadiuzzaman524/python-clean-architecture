@@ -10,7 +10,7 @@ class CovidDataPipeline(ABC):
     """
 
     @abstractmethod
-    def fetch_from_bigquery(self, start_date: str, end_date: str) -> List[CovidDailyRecord]:
+    def fetch_from_bigquery(self, start_date: str, end_date: str) -> List[dict]:
         """Extract COVID data from BigQuery"""
         pass
 

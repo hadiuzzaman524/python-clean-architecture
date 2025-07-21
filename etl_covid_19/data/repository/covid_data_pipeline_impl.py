@@ -1,8 +1,9 @@
+import pandas as pd 
 from etl_covid_19.domain.services.covid_data_pipeline import CovidDataPipeline
 from etl_covid_19.data.data_source.covid_data_source import CovidDataSource
 from etl_covid_19.infrastructure.database.database_client import DatabaseClient
 from etl_covid_19.data.model.covid_model import CovidModel
-import pandas as pd 
+from etl_covid_19.domain.value_objects.covid_daily_record import CovidDailyRecord
 
 class CovidDataPipelineImpl(CovidDataPipeline):
     
@@ -18,8 +19,12 @@ class CovidDataPipelineImpl(CovidDataPipeline):
         df = pd.DataFrame(raw_data)
         df = df.fillna(0).infer_objects(copy=False)
         df = df.drop_duplicates(subset=["date", "country_code"], keep="first")
-        return df.to_dict(orient="records")
+        return [CovidDailyRecord(**item) for item in df.to_dict(orient="records")]
 
     def load_to_database(self, records):
-        self.database_client.bulk_upsert(model= CovidModel, records= records, conflict_columns=['date', 'country_code'])
-    
+        records_as_dicts = [record.__dict__ for record in records]
+        self.database_client.bulk_upsert(
+            model=CovidModel,
+            records=records_as_dicts,
+            conflict_columns=['date', 'country_code']
+        )

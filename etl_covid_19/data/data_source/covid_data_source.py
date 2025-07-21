@@ -1,4 +1,4 @@
-from etl_covid_19.infrastructure.biqquery.bigquery_client import BigQueryClient
+from etl_covid_19.infrastructure.bigquery.bigquery_client import BigQueryClient
 
 class CovidDataSource:
 
