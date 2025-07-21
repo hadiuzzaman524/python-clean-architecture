@@ -1,19 +1,18 @@
-from etl_covid_19.domain.use_cases.fetch_covid_data_usecase import FetchCovidDataUseCase
-from etl_covid_19.domain.use_cases.transform_covid_data_usecase import TransformCovidDataUseCase
-from etl_covid_19.domain.use_cases.insert_covid_data_use_case import InsertCovidDataUseCase
+from etl_covid_19.container import Container
 
 class CovidDataOrchestrator:
-    def __init__(self,
-                 fetch_use_case: FetchCovidDataUseCase,
-                 transform_use_case: TransformCovidDataUseCase,
-                 insert_use_case: InsertCovidDataUseCase):
-        
-        self.fetch_use_case = fetch_use_case
-        self.transform_use_case = transform_use_case
-        self.insert_use_case = insert_use_case
 
-    def run(self):
-        raw_data = self.fetch_use_case.execute()
-        records = self.transform_use_case.execute(raw_data)
-        self.insert_use_case.execute(records)
-        return len(records)
+    container = Container()
+    
+    try: 
+        extract = container.fetch_covid_data_use_case()
+        transform = container.transform_covid_data_use_case()
+        load = container.insert_covid_data_use_case()
+
+        result = extract.execute(start_date='2020-05-01', end_date='2020-05-05')
+        output= transform.execute(raw_data=result)
+        load.execute(records=output)
+
+    except Exception as e: 
+        print(e)
+
