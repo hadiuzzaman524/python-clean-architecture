@@ -9,11 +9,20 @@ class DummyPipeline(CovidDataPipeline):
     def load_to_database(self, records):
         super().load_to_database(records)
 
-def test_abstract_methods_raise_not_implemented():
-    dummy = DummyPipeline()
-    with pytest.raises(NotImplementedError):
-        dummy.fetch_from_bigquery("2020-01-01", "2020-01-02")
-    with pytest.raises(NotImplementedError):
-        dummy.transform_records([{}])
-    with pytest.raises(NotImplementedError):
-        dummy.load_to_database([])
+class TestCovidDataPipeline:
+    
+    @pytest.fixture(autouse=True)
+    def setup(self):
+        self.dummy = DummyPipeline()
+
+    def test_fetch_from_bigquery_raises(self):
+        with pytest.raises(NotImplementedError):
+            self.dummy.fetch_from_bigquery("2020-01-01", "2020-01-02")
+
+    def test_transform_records_raises(self):
+        with pytest.raises(NotImplementedError):
+            self.dummy.transform_records([{}])
+
+    def test_load_to_database_raises(self):
+        with pytest.raises(NotImplementedError):
+            self.dummy.load_to_database([])
