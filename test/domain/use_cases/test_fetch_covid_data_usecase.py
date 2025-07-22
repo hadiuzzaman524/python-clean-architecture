@@ -7,17 +7,16 @@ from etl_covid_19.container import Container
 class TestFetchCovidDataUseCase:
 
     @pytest.fixture(autouse=True)
-    def setup(self, mocker):
-        path = Path(__file__).parent.parent.parent / "mocks" / "covid_data_bigquery_sample.json"
-        with path.open() as f:
-            self.mock_data = json.load(f)
-
+    def setup(self, mocker, covid_bigquery_mock_data):
+        self.mock_data = covid_bigquery_mock_data
         self.mock_pipeline = mocker.Mock()
         self.mock_pipeline.fetch_from_bigquery.return_value = self.mock_data
         self.use_case = FetchCovidDataUseCase(pipeline=self.mock_pipeline)
         self.container = Container()
 
     def test_execute_returns_bigquery_result(self):
+        """Unit test: verifies use case logic with mocked pipeline"""
+
         result = self.use_case.execute(start_date="2020-07-01", end_date="2020-07-01")
 
         self.mock_pipeline.fetch_from_bigquery.assert_called_once_with(
@@ -26,6 +25,8 @@ class TestFetchCovidDataUseCase:
         assert result == self.mock_data
     
     def test_fetch_covid_data_use_case(self): 
+        """Integration test: verifies container and use case with real pipeline"""
+
         fetch_data_usecase = self.container.fetch_covid_data_use_case()
         result = fetch_data_usecase.execute(start_date='2020-07-01', end_date='2020-07-02')
 
