@@ -1,15 +1,14 @@
-import json
 import pytest
-from pathlib import Path
 from etl_covid_19.domain.use_cases.fetch_covid_data_usecase import FetchCovidDataUseCase
 from etl_covid_19.container import Container
+from unittest.mock import Mock
 
 class TestFetchCovidDataUseCase:
 
     @pytest.fixture(autouse=True)
-    def setup(self, mocker, covid_bigquery_mock_data):
+    def setup(self, covid_bigquery_mock_data):
         self.mock_data = covid_bigquery_mock_data
-        self.mock_pipeline = mocker.Mock()
+        self.mock_pipeline = Mock()
         self.mock_pipeline.fetch_from_bigquery.return_value = self.mock_data
         self.use_case = FetchCovidDataUseCase(pipeline=self.mock_pipeline)
         self.container = Container()
