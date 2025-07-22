@@ -37,8 +37,8 @@ class TestInsertCovidDataUsecase:
         """Integration test: check real use case from container."""
         
         insert_usecase = self.container.insert_covid_data_use_case()
-        len = insert_usecase.execute(records=self.records)
-        assert len == 1
+        inserted_count = insert_usecase.execute(records=self.records)
+        assert inserted_count == len(self.records)
         
 
 
