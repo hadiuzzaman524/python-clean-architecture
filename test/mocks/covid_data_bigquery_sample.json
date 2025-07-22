@@ -1,0 +1,15 @@
+[
+  {
+    "date": "2020-07-01",
+    "country_code": "RW",
+    "country_name": "Rwanda",
+    "new_confirmed": 21,
+    "new_deceased": 0,
+    "cumulative_deceased": 3,
+    "cumulative_tested": 151641,
+    "population_male": 6367431,
+    "population_female": 6584778,
+    "smoking_prevalence": 12.3,
+    "diabetes_prevalence": 5.1
+  }
+]
