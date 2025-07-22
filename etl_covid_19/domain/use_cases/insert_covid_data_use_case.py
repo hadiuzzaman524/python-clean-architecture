@@ -7,5 +7,5 @@ class InsertCovidDataUseCase(BaseUseCase):
     def __init__(self, pipeline: CovidDataPipeline):
         self.pipeline = pipeline
 
-    def execute(self, records: List[CovidDailyRecord]) -> None:
-        self.pipeline.load_to_database(records)
+    def execute(self, records: List[CovidDailyRecord]) -> int:
+       return self.pipeline.load_to_database(records)

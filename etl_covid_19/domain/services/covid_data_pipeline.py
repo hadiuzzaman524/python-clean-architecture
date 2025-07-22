@@ -20,6 +20,6 @@ class CovidDataPipeline(ABC):
         pass
 
     @abstractmethod
-    def load_to_database(self, records: List[CovidDailyRecord]) -> None:
+    def load_to_database(self, records: List[CovidDailyRecord]) -> int:
         """Load processed data into the database"""
         pass

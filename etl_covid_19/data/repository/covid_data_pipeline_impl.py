@@ -28,3 +28,4 @@ class CovidDataPipelineImpl(CovidDataPipeline):
             records=records_as_dicts,
             conflict_columns=['date', 'country_code']
         )
+        return len(records)
