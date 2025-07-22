@@ -12,14 +12,14 @@ class CovidDataPipeline(ABC):
     @abstractmethod
     def fetch_from_bigquery(self, start_date: str, end_date: str) -> List[dict]:
         """Extract COVID data from BigQuery"""
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def transform_records(self, raw_data: List[dict]) -> List[CovidDailyRecord]:
         """Transform raw dicts into validated CovidDailyRecord objects"""
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def load_to_database(self, records: List[CovidDailyRecord]) -> int:
         """Load processed data into the database"""
-        pass
+        raise NotImplementedError()
