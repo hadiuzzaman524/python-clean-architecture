@@ -1,19 +1,16 @@
 from typing import List, Dict, Optional
 from google.cloud import bigquery
 from google.oauth2 import service_account
-from config.app_config import config
 
 class BigQueryClient:
-    def __init__(self):
+    def __init__(self, service_account_path: str, project_id: str):
         """
         Initialize BigQuery client using service account credentials.
         """
-        self.config = config.bigquery
+
         try:
-            credentials = service_account.Credentials.from_service_account_file(
-                self.config.SERVICE_ACCOUNT_FILEPATH
-            )
-            self.client = bigquery.Client(credentials=credentials, project=self.config.PROJECT_ID)
+            credentials = service_account.Credentials.from_service_account_file(service_account_path)
+            self.client = bigquery.Client(credentials=credentials, project=project_id)
        
         except Exception as error:
             print(f"Error initializing BigQuery client: {error}")

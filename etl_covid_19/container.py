@@ -9,12 +9,19 @@ from etl_covid_19.data.data_source.covid_data_source import CovidDataSource
 
 from etl_covid_19.infrastructure.bigquery.bigquery_client import BigQueryClient
 from etl_covid_19.infrastructure.database.database_client import DatabaseClient
+from config.app_config import config
 
 
 class Container(containers.DeclarativeContainer):
 
+    bigquery_config = config.bigquery
+    
     # Infrastructure clients
-    bigquery_client = providers.Singleton(BigQueryClient)
+    bigquery_client = providers.Singleton(
+        BigQueryClient, 
+        service_account_path = bigquery_config.SERVICE_ACCOUNT_FILEPATH,
+        project_id = bigquery_config.PROJECT_ID
+    )
     database_client = providers.Singleton(DatabaseClient)
     
     # Data source with dependency on bigquery client
