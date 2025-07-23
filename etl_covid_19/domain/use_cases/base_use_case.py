@@ -4,4 +4,4 @@ from typing import Any
 class BaseUseCase(ABC):
     @abstractmethod
     def execute(self, *args, **kwargs) -> Any:
-        pass
+        raise NotImplementedError()
