@@ -27,4 +27,5 @@ class BigQueryClient:
         
         except Exception as error:
             print(f"Error running query: {error}")
+            return None
  
