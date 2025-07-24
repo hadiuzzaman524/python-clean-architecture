@@ -15,6 +15,7 @@ from config.app_config import config
 class Container(containers.DeclarativeContainer):
 
     bigquery_config = config.bigquery
+    pg_config = config.postgres
     
     # Infrastructure clients
     bigquery_client = providers.Singleton(
@@ -22,7 +23,14 @@ class Container(containers.DeclarativeContainer):
         service_account_path = bigquery_config.SERVICE_ACCOUNT_FILEPATH,
         project_id = bigquery_config.PROJECT_ID
     )
-    database_client = providers.Singleton(DatabaseClient)
+    database_client = providers.Singleton(
+        DatabaseClient,
+        user_name = pg_config.USERNAME,
+        password = pg_config.PASSWORD, 
+        host = pg_config.HOST,
+        port = pg_config.PORT,
+        db_name = pg_config.DB_NAME
+    )
     
     # Data source with dependency on bigquery client
     covid_data_source = providers.Factory(
