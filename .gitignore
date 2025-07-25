@@ -4,3 +4,4 @@ __pycache__
 config/carbon-zone-466205-r5-baaa1a665c04.json
 logs/
 .pytest_cache/
+etl_covid_19.egg-info/

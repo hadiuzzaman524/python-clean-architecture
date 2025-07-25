@@ -1,10 +1,10 @@
-sqlalchemy==1.4.49
+apache-airflow==3.0.3
 pydantic==2.11.7
 psycopg2-binary==2.9.10
 google-cloud-bigquery==3.35.0
 dependency-injector==4.48.1
-pandas
+pandas==2.3.1
 pytest==8.4.1
 pytest-cov==6.2.1
-setuptools
-tomli
+setuptools==80.9.0
+tomli==2.2.1
