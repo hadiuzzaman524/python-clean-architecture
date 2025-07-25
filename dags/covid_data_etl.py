@@ -17,8 +17,8 @@ def covid_data_pipeline():
         start_date = end_date.subtract(days=7)
 
         orch = CovidDataOrchestrator(
-            start_date=start_date.to_date_string(),  
-            end_date=end_date.to_date_string()
+            start_date='2020-01-01',  
+            end_date= '2020-01-02'
         )
         return orch.trigger()
 
