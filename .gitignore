@@ -3,3 +3,4 @@ config/app_config.toml
 __pycache__
 config/carbon-zone-466205-r5-baaa1a665c04.json
 logs/
+.pytest_cache/
