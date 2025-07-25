@@ -3,8 +3,8 @@ from airflow.decorators import dag, task
 from etl_covid_19.presentation.covid_data_orchestrator import CovidDataOrchestrator
 
 @dag(
-    schedule="0 6 * * *",  # Changed from schedule_interval to schedule
-    start_date=pendulum.datetime(2025, 7, 24, tz="UTC"),
+    schedule="0 6 * * *",  
+    start_date=pendulum.datetime(2020, 7, 24, tz="UTC"),
     catchup=True,
     tags=["covid", "etl"],
 )
