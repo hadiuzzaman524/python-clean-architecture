@@ -4,20 +4,34 @@ A production-grade ETL pipeline for processing COVID-19 data from BigQuery publi
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Architecture Overview
 
-This project follows **Clean Architecture** principles for maintainability and scalability:
+This project is built using **Clean Architecture** and **Domain-Driven Design (DDD)** principles.  
+**Why?**  
+- **Separation of concerns:** Each layer has a clear responsibility, making code easier to maintain and extend.
+- **Testability:** Business logic is isolated from infrastructure, so you can write fast, reliable unit tests.
+- **Scalability:** You can swap out databases, APIs, or other integrations with minimal changes to core logic.
+- **Inspiration for developers:** This structure is ideal for learning how to build robust, production-grade data pipelines.
 
-- **Domain Layer**: Business logic, use cases, value objects
-- **Infrastructure Layer**: External integrations (BigQuery, Database)
-- **Data Layer**: Models, repositories, data sources
-- **Application Layer**: Dependency injection and orchestration
+**Layers:**
+- **Domain Layer:**  
+  Contains business logic, use cases, and value objects.  
+  *Example:* Calculating COVID statistics, validating data.
+- **Data Layer:**  
+  Models, repositories, and data sources.  
+  *Example:* Mapping BigQuery results to Python objects, saving records to PostgreSQL.
+- **Infrastructure Layer:**  
+  Integrations with external systems (BigQuery, PostgreSQL).  
+  *Example:* Database clients, BigQuery clients.
+- **Application Layer:**  
+  Orchestration, dependency injection, and entry points.  
+  *Example:* Main pipeline runner, Airflow DAGs.
 
 ---
 
 ## 📊 Data Source
 
-- **BigQuery Public Dataset**:  
+- **BigQuery Public Dataset:**  
   `bigquery-public-data.covid19_open_data.covid19_open_data`
 
 ---
@@ -67,6 +81,21 @@ PROJECT_ID = "carbon-zone-466205-r5"
 SERVICE_ACCOUNT_FILEPATH = "config/carbon-zone-466205-r5-baaa1a665c04.json"
 ```
 
+**BigQuery Setup Instructions:**
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/).
+2. Create or select your project (e.g., `carbon-zone-466205-r5`).
+3. Navigate to **IAM & Admin > Service Accounts**.
+4. Create a new service account (or use an existing one).
+5. Grant it the necessary BigQuery permissions (e.g., BigQuery Data Viewer).
+6. Click on the service account, go to **Keys**, and create a new key (JSON).
+7. Download the JSON file.
+8. **Place the downloaded JSON file inside your project's `config/` folder.**
+   - Example: `config/carbon-zone-466205-r5-baaa1a665c04.json`
+9. Make sure the path in your config matches the filename.
+
+This will allow your pipeline to authenticate and access BigQuery data.
+
 ### 4. Create Database Table
 
 ```sql
@@ -86,12 +115,34 @@ CREATE TABLE covid_daily_records (
 );
 ```
 
-### 5. Run ETL Pipeline
+### 5. Run ETL Pipeline Locally
 
 ```bash
 python main.py --cron-name covid_data_orchestrator --start-date 2020-08-01 --end-date 2020-08-02
 ```
 
+---
+
+## 🗓️ Scheduling with Airflow
+
+### 1. Start Airflow Locally
+
+```bash
+docker-compose up --build
+```
+
+- Access Airflow UI at [http://localhost:8080](http://localhost:8080)
+- Login with default credentials (username: `airflow`, password: `airflow`)
+
+### 2. Remove Example DAGs from Airflow UI
+
+- If you ever started Airflow with examples enabled, you must **reset the metadata database**:
+  ```bash
+  docker-compose down
+  docker volume rm airflow-data-pipeline_postgres-db-volume
+  docker-compose up --build
+  ```
+---
 
 ## 🧪 Testing
 
@@ -116,15 +167,36 @@ etl_covid_19/
 │   ├── services/
 │   ├── use_cases/
 │   └── value_objects/
-└── infrastructure/
-    ├── bigquery/
-    └── database/
+├── infrastructure/
+│   ├── bigquery/
+│   └── database/
+config/
+│   ├── app_config.toml
+│   ├── airflow.cfg
+dags/
+│   ├── covid_data_etl.py
+│   ├── .airflowignore
 test/
-├── unit/
-├── integration/
-├── contracts/
-└── conftest.py
+│   ├── unit/
+│   ├── integration/
+│   ├── contracts/
+│   └── conftest.py
 ```
+
+---
+
+## 🌟 Why Follow This Project?
+
+- **Learn Clean Architecture & DDD:**  
+  See how to structure real-world data pipelines for maintainability and scalability.
+- **Production-Ready Patterns:**  
+  Use dependency injection, configuration management, and robust error handling.
+- **Easy Testing:**  
+  Write unit and integration tests with clear separation of logic.
+- **Airflow Integration:**  
+  Schedule and monitor ETL jobs with industry-standard tools.
+- **Inspiration:**  
+  Adopt best practices for your own data engineering projects.
 
 ---
 
