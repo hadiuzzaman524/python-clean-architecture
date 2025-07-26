@@ -90,8 +90,8 @@ PORT = "5432"
 DB_NAME = "your_db_name"
 
 [bigquery]
-PROJECT_ID = "carbon-zone-466205-r5"
-SERVICE_ACCOUNT_FILEPATH = "config/carbon-zone-466205-r5-baaa1a665c04.json"
+PROJECT_ID = "carbon-zone-460986205-r5"
+SERVICE_ACCOUNT_FILEPATH = "config/carbon-zone-4uyt205-r5-baaa1a665c04.json"
 ```
 
 ### 4. Create Database Table
@@ -132,9 +132,9 @@ docker-compose up --build
 - Access Airflow UI at [http://localhost:8080](http://localhost:8080)
 - Login with default credentials (username: `airflow`, password: `airflow`)
 
-### 2. Remove Example DAGs from Airflow UI
+### 2. Disable Example DAGs in Airflow UI (Optional)
 
-- If you ever started Airflow with examples enabled, you must **reset the metadata database**:
+- If example DAGs appear in your Airflow UI,just restart Airflow usig.
   ```bash
   docker-compose down
   docker volume rm airflow-data-pipeline_postgres-db-volume
