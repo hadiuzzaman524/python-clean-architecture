@@ -1,8 +1,24 @@
-.venv
-config/app_config.toml
-__pycache__
-config/carbon-zone-466205-r5-baaa1a665c04.json
-logs/
+# Python cache
+__pycache__/
+*.py[cod]
 .pytest_cache/
+
+# Virtual environment
+.venv/
+
+# macOS system file
+.DS_Store
+
+# Logs and build artifacts
+logs/
 build/
+dist/
 *.egg-info/
+
+# Config and secrets (always be careful with these!)
+config/app_config.toml
+config/carbon-zone-466205-r5-baaa1a665c04.json
+
+# IDE/editor files
+.vscode/
+.idea/
