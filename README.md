@@ -168,17 +168,37 @@ etl_covid_19/
 ├── infrastructure/
 │   ├── bigquery/
 │   └── database/
+├── presentation/
+│   ├── base_cron_job.py
+│   └── covid_data_orchestrator.py
 config/
 │   ├── app_config.toml
-│   ├── airflow.cfg
+│   ├── config_loader.py
+│   ├── config_model.py
+│   └── airflow.cfg
 dags/
 │   ├── covid_data_etl.py
-│   ├── .airflowignore
+│   └── .airflowignore
 test/
-│   ├── unit/
-│   ├── integration/
-│   ├── contracts/
-│   └── conftest.py
+├── data/
+│   ├── data_source/
+│   ├── model/
+│   └── repository/
+├── domain/
+│   ├── services/
+│   ├── use_cases/
+│   └── value_objects/
+├── infrastructure/
+│   ├── bigquery/
+│   └── database/
+├── presentation/
+│   ├── test_base_cron_job.py
+│   └── test_covid_data_orchestrator.py
+├── setup.py
+├── main.py
+├── docker-compose.yaml
+├── dockerfile
+....
 ```
 
 ---
