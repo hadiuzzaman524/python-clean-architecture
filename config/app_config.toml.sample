@@ -6,5 +6,5 @@ PORT = "5432"
 DB_NAME = "newdb"
 
 [bigquery]
-PROJECT_ID = "carbon-zone-46623dsd-r5"
-SERVICE_ACCOUNT_FILEPATH = "config/carbon-zone-405-r5-baaa1a665c04.json"
+PROJECT_ID = "carbon-zone-4633232623dsd-r5"
+SERVICE_ACCOUNT_FILEPATH = "config/carbon-zone.json"

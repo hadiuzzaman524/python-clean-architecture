@@ -90,7 +90,7 @@ PORT = "5432"
 DB_NAME = "your_db_name"
 
 [bigquery]
-PROJECT_ID = "carbon-zone-460986205-r5"
+PROJECT_ID = "carbon-zone-4603345386205-r5"
 SERVICE_ACCOUNT_FILEPATH = "config/carbon-zone-4uyt205-r5-baaa1a665c04.json"
 ```
 
@@ -132,6 +132,9 @@ docker-compose up --build
 - Access Airflow UI at [http://localhost:8080](http://localhost:8080)
 - Login with default credentials (username: `airflow`, password: `airflow`)
 
+![Airflow DAGs Demo 1](images/airflow_demo.png)
+![Airflow DAGs Demo 2](images/airflow_demo_2.png)
+
 ### 2. Disable Example DAGs in Airflow UI (Optional)
 
 - If example DAGs appear in your Airflow UI,just restart Airflow usig.
@@ -141,6 +144,7 @@ docker-compose up --build
   docker-compose up --build
   ```
 ---
+
 
 ## 🧪 Testing
 
@@ -224,3 +228,4 @@ test/
 - 🐛 Issues: [GitHub Issues](https://github.com/hadiuzzaman524/python-clean-architecture/issues)
 - 📖 Documentation: [Wiki](https://github.com/hadiuzzaman524/python-clean-architecture/wiki)
 - 💬 Discussions: [GitHub Discussions](https://github.com/hadiuzzaman524/python-clean-architecture/discussions)
+
