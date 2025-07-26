@@ -20,7 +20,7 @@ This project is built using **Clean Architecture** and **Domain-Driven Design (D
   Models, repositories, and data sources (Mapping BigQuery results to Python objects, saving records to PostgreSQL).
 - **Infrastructure Layer:**  
   Integrations with external systems (BigQuery, PostgreSQL).
-- **Application Layer:**  
+- **Presentation Layer:**  
   Orchestration, dependency injection, and entry points(Main pipeline runner, Airflow DAGs).
 
 ---
@@ -37,7 +37,7 @@ This project is built using **Clean Architecture** and **Domain-Driven Design (D
 ### Prerequisites
 
 - Python 3.11+
-- PostgreSQL database (local or Docker)
+- PostgreSQL database (Docker)
 - Google Cloud credentials (for BigQuery access)
 
 ### 1. Environment Setup
