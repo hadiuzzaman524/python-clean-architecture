@@ -92,17 +92,6 @@ CREATE TABLE covid_daily_records (
 python main.py --cron-name covid_data_orchestrator --start-date 2020-08-01 --end-date 2020-08-02
 ```
 
-#### Example Commands
-
-```bash
-# Process single day
-python main.py --cron-name covid_data_orchestrator --start-date 2020-08-01 --end-date 2020-08-01
-
-# Process date range
-python main.py --cron-name covid_data_orchestrator --start-date 2020-08-01 --end-date 2020-08-31
-```
-
----
 
 ## 🧪 Testing
 
