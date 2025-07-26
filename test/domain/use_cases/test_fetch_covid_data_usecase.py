@@ -1,6 +1,6 @@
 import pytest
 from etl_covid_19.domain.use_cases.fetch_covid_data_usecase import FetchCovidDataUseCase
-from etl_covid_19.container import Container
+from etl_covid_19.service_locator import ServiceLocator
 from unittest.mock import Mock
 
 class TestFetchCovidDataUseCase:
@@ -11,7 +11,7 @@ class TestFetchCovidDataUseCase:
         self.mock_pipeline = Mock()
         self.mock_pipeline.fetch_from_bigquery.return_value = self.mock_data
         self.use_case = FetchCovidDataUseCase(pipeline=self.mock_pipeline)
-        self.container = Container()
+        self.locator = ServiceLocator()
 
     def test_execute_returns_bigquery_result(self):
         """Unit test: verifies use case logic with mocked pipeline"""
@@ -26,7 +26,7 @@ class TestFetchCovidDataUseCase:
     def test_fetch_covid_data_use_case(self): 
         """Integration test: verifies container and use case with real pipeline"""
 
-        fetch_data_usecase = self.container.fetch_covid_data_use_case()
+        fetch_data_usecase = self.locator.fetch_covid_data_use_case()
         result = fetch_data_usecase.execute(start_date='2020-07-01', end_date='2020-07-02')
 
         assert isinstance(result, list)

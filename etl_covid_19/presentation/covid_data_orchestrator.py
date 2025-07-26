@@ -1,4 +1,4 @@
-from etl_covid_19.container import Container
+from etl_covid_19.service_locator import ServiceLocator
 from etl_covid_19.presentation.base_cron_job import BaseCronJob
 
 class CovidDataOrchestrator(BaseCronJob):
@@ -9,11 +9,11 @@ class CovidDataOrchestrator(BaseCronJob):
 
     def trigger(self):
 
-        container = Container()
+        locator = ServiceLocator()
 
-        extract = container.fetch_covid_data_use_case()
-        transform = container.transform_covid_data_use_case()
-        load = container.insert_covid_data_use_case()
+        extract = locator.fetch_covid_data_use_case()
+        transform = locator.transform_covid_data_use_case()
+        load = locator.insert_covid_data_use_case()
 
         try: 
 

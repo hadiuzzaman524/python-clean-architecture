@@ -12,7 +12,7 @@ from etl_covid_19.infrastructure.database.database_client import DatabaseClient
 from config.app_config import config
 
 
-class Container(containers.DeclarativeContainer):
+class ServiceLocator(containers.DeclarativeContainer):
 
     bigquery_config = config.bigquery
     pg_config = config.postgres

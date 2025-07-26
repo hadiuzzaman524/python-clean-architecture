@@ -2,7 +2,7 @@ import pytest
 from unittest.mock import Mock
 from etl_covid_19.domain.use_cases.transform_covid_data_usecase import TransformCovidDataUseCase
 from etl_covid_19.domain.value_objects.covid_daily_record import CovidDailyRecord
-from etl_covid_19.container import Container
+from etl_covid_19.service_locator import ServiceLocator
 
 class TestTransformCovidDataUseCase:
 
@@ -28,7 +28,7 @@ class TestTransformCovidDataUseCase:
         self.mock_pipeline = Mock()
         self.mock_pipeline.transform_records.return_value = self.expected_result
         self.usecase = TransformCovidDataUseCase(self.mock_pipeline)
-        self.container = Container()
+        self.locator = ServiceLocator()
 
     def test_execute_transforms_raw_data_to_value_objects(self):
         """Unit test: check use case with mocked pipeline."""
@@ -40,7 +40,7 @@ class TestTransformCovidDataUseCase:
     def test_transform_covid_data_usecase(self): 
         """Integration test: check real use case from container."""
         
-        transform_usecase = self.container.transform_covid_data_use_case()
+        transform_usecase = self.locator.transform_covid_data_use_case()
         result = transform_usecase.execute(raw_data=self.raw_data)
         assert result
         assert len(result) >= 1

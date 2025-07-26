@@ -2,7 +2,7 @@ import pytest
 from unittest.mock import Mock
 from etl_covid_19.domain.use_cases.insert_covid_data_use_case import InsertCovidDataUseCase
 from etl_covid_19.domain.value_objects.covid_daily_record import CovidDailyRecord
-from etl_covid_19.container import Container
+from etl_covid_19.service_locator import ServiceLocator
 
 class TestInsertCovidDataUsecase:
 
@@ -25,7 +25,7 @@ class TestInsertCovidDataUsecase:
 
         self.mock_pipeline = Mock()
         self.usecase = InsertCovidDataUseCase(pipeline= self.mock_pipeline)
-        self.container = Container()
+        self.locator = ServiceLocator()
     
     def test_execute_calls_pipeline_with_records(self): 
         """Unit test: check use case with mocked pipeline."""
@@ -36,7 +36,7 @@ class TestInsertCovidDataUsecase:
     def test_insert_covid_data_usecase(self):
         """Integration test: check real use case from container."""
         
-        insert_usecase = self.container.insert_covid_data_use_case()
+        insert_usecase = self.locator.insert_covid_data_use_case()
         inserted_count = insert_usecase.execute(records=self.records)
         assert inserted_count == len(self.records)
         

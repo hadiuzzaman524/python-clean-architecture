@@ -156,7 +156,7 @@ PYTHONPATH=$(pwd) pytest --cov=etl_covid_19 --cov-report=term-missing test/
 
 ```
 etl_covid_19/
-├── container.py
+├── service_locator.py
 ├── data/
 │   ├── data_source/
 │   ├── model/
