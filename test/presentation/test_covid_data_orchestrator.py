@@ -16,7 +16,7 @@ class TestCovidDataOrchestrator:
             end_date=self.end_date
         )
 
-    @patch("etl_covid_19.presentation.covid_data_orchestrator.Container")
+    @patch("etl_covid_19.presentation.covid_data_orchestrator.ServiceLocator")
     def test_trigger_success(self, mock_container_cls):
 
         mock_container = MagicMock()
@@ -35,7 +35,7 @@ class TestCovidDataOrchestrator:
         mock_transform.execute.assert_called_once_with(raw_data="raw_data")
         mock_load.execute.assert_called_once_with(records="processed_data")
 
-    @patch("etl_covid_19.presentation.covid_data_orchestrator.Container")
+    @patch("etl_covid_19.presentation.covid_data_orchestrator.ServiceLocator")
     def test_trigger_with_exception(self, mock_container_cls, capsys):
    
         mock_container = MagicMock()
