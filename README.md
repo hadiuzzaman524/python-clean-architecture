@@ -231,6 +231,5 @@ test/
 
 - 📧 Email: hadiuzzaman908@gmail.com
 - 🐛 Issues: [GitHub Issues](https://github.com/hadiuzzaman524/python-clean-architecture/issues)
-- 📖 Documentation: [Wiki](https://github.com/hadiuzzaman524/python-clean-architecture/wiki)
-- 💬 Discussions: [GitHub Discussions](https://github.com/hadiuzzaman524/python-clean-architecture/discussions)
+
 
