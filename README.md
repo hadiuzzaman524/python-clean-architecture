@@ -132,7 +132,10 @@ docker-compose up --build
 - Access Airflow UI at [http://localhost:8080](http://localhost:8080)
 - Login with default credentials (username: `airflow`, password: `airflow`)
 
+**🔍 Covid Data Pipeline Overview**
 ![Airflow DAGs Demo 1](images/airflow_demo.png)
+
+**⏱️ Scheduled Execution**
 ![Airflow DAGs Demo 2](images/airflow_demo_2.png)
 
 ### 2. Disable Example DAGs in Airflow UI (Optional)
