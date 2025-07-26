@@ -121,7 +121,7 @@ python main.py --cron-name covid_data_orchestrator --start-date 2020-08-01 --end
 
 ---
 
-## 🗓️ Scheduling with Airflow
+## 🗓️ Scheduling with Airflow (Optional)
 
 ### 1. Start Airflow Locally
 
