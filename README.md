@@ -15,17 +15,13 @@ This project is built using **Clean Architecture** and **Domain-Driven Design (D
 
 **Layers:**
 - **Domain Layer:**  
-  Contains business logic, use cases, and value objects.  
-  *Example:* Calculating COVID statistics, validating data.
+  Contains business logic, use cases, and value objects (Calculating COVID statistics, validating data). 
 - **Data Layer:**  
-  Models, repositories, and data sources.  
-  *Example:* Mapping BigQuery results to Python objects, saving records to PostgreSQL.
+  Models, repositories, and data sources (Mapping BigQuery results to Python objects, saving records to PostgreSQL).
 - **Infrastructure Layer:**  
-  Integrations with external systems (BigQuery, PostgreSQL).  
-  *Example:* Database clients, BigQuery clients.
+  Integrations with external systems (BigQuery, PostgreSQL).
 - **Application Layer:**  
-  Orchestration, dependency injection, and entry points.  
-  *Example:* Main pipeline runner, Airflow DAGs.
+  Orchestration, dependency injection, and entry points(Main pipeline runner, Airflow DAGs).
 
 ---
 
@@ -66,21 +62,6 @@ docker run -d \
 
 ### 3. Configuration
 
-Edit your config in [config/app_config.toml](config/app_config.toml):
-
-```toml
-[postgres]
-HOST = "192.168.0.236"  # Your IP
-USERNAME = "db_user_name"
-PASSWORD = "db_password"
-PORT = "5432"
-DB_NAME = "your_db_name"
-
-[bigquery]
-PROJECT_ID = "carbon-zone-466205-r5"
-SERVICE_ACCOUNT_FILEPATH = "config/carbon-zone-466205-r5-baaa1a665c04.json"
-```
-
 **BigQuery Setup Instructions:**
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com/).
@@ -95,6 +76,23 @@ SERVICE_ACCOUNT_FILEPATH = "config/carbon-zone-466205-r5-baaa1a665c04.json"
 9. Make sure the path in your config matches the filename.
 
 This will allow your pipeline to authenticate and access BigQuery data.
+
+
+Rename `config/app_config.toml.sample` file to `config/app_config.toml` and
+edit your config in [config/app_config.toml](config/app_config.toml.sample):
+
+```toml
+[postgres]
+HOST = "192.168.0.236"  # Your IP
+USERNAME = "db_user_name"
+PASSWORD = "db_password"
+PORT = "5432"
+DB_NAME = "your_db_name"
+
+[bigquery]
+PROJECT_ID = "carbon-zone-466205-r5"
+SERVICE_ACCOUNT_FILEPATH = "config/carbon-zone-466205-r5-baaa1a665c04.json"
+```
 
 ### 4. Create Database Table
 
