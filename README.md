@@ -129,7 +129,7 @@ python main.py --cron-name covid_data_orchestrator --start-date 2020-08-01 --end
 docker-compose up --build
 ```
 
-- Access Airflow UI at [http://localhost:8080](http://localhost:8080)
+- Access Airflow UI at [http://localhost:8080/dags/covid_data_pipeline](http://localhost:8080)
 - Login with default credentials (username: `airflow`, password: `airflow`)
 
 **🔍 Covid Data Pipeline Overview**
