@@ -232,4 +232,9 @@ test/
 - 📧 Email: hadiuzzaman908@gmail.com
 - 🐛 Issues: [GitHub Issues](https://github.com/hadiuzzaman524/python-clean-architecture/issues)
 
+## License
+
+This project is licensed under the [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) license.  
+© 2025 MD Hadiuzzaman. For learning purposes only. Commercial use is prohibited.
+
 
